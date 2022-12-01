@@ -7,7 +7,7 @@ let echoOptions = {
 }
 
 if (document.head.querySelector('meta[name="host"]') !== null) {
-  echoOptions.host = document.head.querySelector('meta[name="host"]').content
+  // echoOptions.host = document.head.querySelector('meta[name="host"]').content
 }
 
 if (document.head.querySelector('meta[name="pusher_key"]') !== null) {
@@ -19,30 +19,31 @@ if (document.head.querySelector('meta[name="pusher_cluster"]') !== null) {
 }
 
 if (document.head.querySelector('meta[name="pusher_host"]') !== null) {
-  echoOptions.wsHost = document.head.querySelector('meta[name="pusher_host"]').content
+  // echoOptions.wsHost = document.head.querySelector('meta[name="pusher_host"]').content
 }
 
 if (document.head.querySelector('meta[name="pusher_port"]') !== null) {
-  echoOptions.wsPort = document.head.querySelector('meta[name="pusher_port"]').content
+  // echoOptions.wsPort = document.head.querySelector('meta[name="pusher_port"]').content
 }
 
 if (document.head.querySelector('meta[name="pusher_port"]') !== null) {
-  echoOptions.wssPort = document.head.querySelector('meta[name="pusher_port"]').content
+  // echoOptions.wssPort = document.head.querySelector('meta[name="pusher_port"]').content
 }
 
 if (document.head.querySelector('meta[name="pusher_encrypted"]') !== null) {
-  echoOptions.encrypted = (document.head.querySelector('meta[name="pusher_encrypted"]').content === '1')
+  // echoOptions.encrypted = (document.head.querySelector('meta[name="pusher_encrypted"]').content === '1')
+  echoOptions.forceTLS = (document.head.querySelector('meta[name="pusher_encrypted"]').content === '1')
 }
 
 // Check if we need to define auth endpoint
 if (document.head.querySelector('meta[name="auth_endpoint"]') !== null) {
-  echoOptions.authEndpoint = document.head.querySelector('meta[name="auth_endpoint"]').content
+  // echoOptions.authEndpoint = document.head.querySelector('meta[name="auth_endpoint"]').content
 }
-console.log('got here 1')
-// window.Echo = new Echo(echoOptions)
-console.log('got here 2')
+console.log(echoOptions)
+window.Echo = new Echo(echoOptions)
+console.log('connected')
 let userReceivesBroadcastOn = document.head.querySelector('meta[name="user_private_channel"]').content
 
 if (userReceivesBroadcastOn !== null) {
-  // window.userPrivateChannel = window.Echo.private(userReceivesBroadcastOn)
+  window.userPrivateChannel = window.Echo.private(userReceivesBroadcastOn)
 }
