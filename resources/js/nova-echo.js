@@ -39,9 +39,8 @@ if (document.head.querySelector('meta[name="pusher_encrypted"]') !== null) {
 if (document.head.querySelector('meta[name="auth_endpoint"]') !== null) {
   // echoOptions.authEndpoint = document.head.querySelector('meta[name="auth_endpoint"]').content
 }
-console.log(echoOptions)
+echoOptions.cluster = 'us2'
 window.Echo = new Echo(echoOptions)
-console.log('connected')
 let userReceivesBroadcastOn = document.head.querySelector('meta[name="user_private_channel"]').content
 
 if (userReceivesBroadcastOn !== null) {
