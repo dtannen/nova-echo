@@ -38,9 +38,9 @@ if (document.head.querySelector('meta[name="pusher_encrypted"]') !== null) {
 if (document.head.querySelector('meta[name="auth_endpoint"]') !== null) {
   echoOptions.authEndpoint = document.head.querySelector('meta[name="auth_endpoint"]').content
 }
-
+console.log('got here 1')
 window.Echo = new Echo(echoOptions)
-
+console.log('got here 2')
 let userReceivesBroadcastOn = document.head.querySelector('meta[name="user_private_channel"]').content
 
 if (userReceivesBroadcastOn !== null) {
